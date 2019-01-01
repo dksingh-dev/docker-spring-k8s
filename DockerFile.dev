@@ -19,4 +19,4 @@ ADD ${JAR_FILE} spring-boot-web-jsp-1.0.jar
 ENV JAVA_OPTS="-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8787,suspend=n"
 
 # Run the jar file 
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=docker -jar /spring-boot-web-jsp-1.0.jar" ]
+ENTRYPOINT [ "sh", "-c", "mvn test; java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=docker -jar /spring-boot-web-jsp-1.0.jar" ]
