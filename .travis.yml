@@ -6,6 +6,6 @@ services:
  
 before_install:
   - docker build -t myfirsttravisspringBoot -f DockerFile.dev .
-   
+  
 script:
   - docker run myFirstTravisSpringBoot 
