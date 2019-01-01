@@ -8,7 +8,7 @@ LABEL maintainer="dksingh.engineer@gmail.com"
 VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8080
+EXPOSE 8080 8787
 
 # The application's jar file
 ARG JAR_FILE=target/spring-boot-web-jsp-1.0.jar
@@ -16,5 +16,7 @@ ARG JAR_FILE=target/spring-boot-web-jsp-1.0.jar
 # Add the application's jar to the container
 ADD ${JAR_FILE} spring-boot-web-jsp-1.0.jar
 
+ENV JAVA_OPTS="-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8787,suspend=n"
+
 # Run the jar file 
-CMD ["java","-jar","spring-boot-web-jsp-1.0.jar"]
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=docker -jar /spring-boot-web-jsp-1.0.jar" ]
