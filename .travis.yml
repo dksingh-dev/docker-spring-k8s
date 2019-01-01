@@ -8,4 +8,4 @@ before_install:
   - docker build -t myfirsttravisspringboot -f DockerFile.dev .
   
 script:
-  - docker run myFirstTravisSpringBoot 
+  - docker run myfirsttravisspringboot 
