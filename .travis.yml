@@ -8,4 +8,5 @@ before_install:
   - docker build -t myfirsttravisspringboot -f DockerFile.dev .
   
 script:
+  - ./mvnw clean install -B
   - docker run myfirsttravisspringboot -- --coverage
